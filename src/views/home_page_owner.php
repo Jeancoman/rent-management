@@ -11,7 +11,7 @@
 
 <body class="min-h-screen grid grid-rows-[80px_1fr_60px] grid-cols-1 bg-slate-100">
     <?php include "components/header.php"; ?>
-    <?php include "components/home_owner.php"; ?>
+    <?php include "components/home_page_owner.php"; ?>
     <?php include "components/footer.php"; ?>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>

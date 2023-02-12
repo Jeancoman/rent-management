@@ -3,7 +3,7 @@
         <div class="bg-white py-7 px-6 max-w-xs shadow-md rounded-lg">
             <h1 class="name font-medium text-xl">Dashboard</h1>
             <div class="pt-4 flex flex-col gap-4">
-                <a href="/" class="flex items-center gap-2 cursor-pointer">
+            <a href="/" class="flex items-center gap-2 cursor-pointer">
                     <img src="../assets/bar_chart.svg" class="w-6 h-6">
                     <p>Chart</p>
                 </a>
@@ -30,9 +30,22 @@
             </div>
         </div>
     </div>
-    <div class="pr-16">
-        <div class="shadow-lg rounded-lg overflow-hidden">
-            <canvas class="p-10 bg-white max-w-4xl" id="chartBar"></canvas>
+    <div>
+        <div class="grid grid-cols-5 px-2 py-4 place-items-center place-content-center font-bold">
+            <p class="text-slate-500">Shop #</p>
+            <p class="text-slate-500">Name</p>
+            <p class="text-slate-500">Tenants</p>
+            <p class="text-slate-500">Pending rent</p>
+            <p class="text-slate-500">Recieved rent</p>
+        </div>
+        <div>
+            <div class="grid grid-cols-5 place-items-center place-content-center bg-white p-3 rounded-full shadow-md">
+                <p class="font-bold">1</p>
+                <p>Street Shiter</p>
+                <p>10</p>
+                <p>500,000 IRN</p>
+                <p>0,00 IRN</p>
+            </div>
         </div>
     </div>
 </div>
