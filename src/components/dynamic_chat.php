@@ -37,7 +37,7 @@ $messages = Message::queryAllByChatId($chat_id, $database->connection());
             <h1 class="font-bold"><?= $inverse_user["name"] ?></h1>
         </div>
         <div id="scroll" class="bg-cover h-[340px] bg-white overflow-auto">
-            <div class="p-6 flex flex-col gap-3 justify-end overflow-auto pointer-events-auto">
+            <div class="p-6 flex flex-col min-h-[340px] gap-3 justify-end overflow-auto pointer-events-auto">
                 <?php if ($messages) : ?>
                     <?php foreach ($messages as $message) : ?>
                         <?php if ($message["user_id"] == $inverse_user["id"]) : ?>

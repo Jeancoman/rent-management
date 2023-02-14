@@ -10,9 +10,11 @@ $database = new Database();
 $user_id = $_SESSION["user_id"];
 $user = User::queryById($user_id, $database->connection());
 $details = TenantDetails::queryByUserId($user_id, $database->connection());
-$rent = Rent::queryByUserId($user_id, $database-> connection());
-$payments = Payment::queryAllByUserIdAndRentId($user_id, $rent["id"], $database->connection());
-$rentStatus = Rent::rentStatus($payments, $rent);
+$rent = Rent::queryByUserId($user_id, $database->connection());
+if ($rent["id"]) {
+    $payments = Payment::queryAllByUserIdAndRentId($user_id, $rent["id"], $database->connection());
+    $rentStatus = Rent::rentStatus($payments, $rent);
+}
 
 ?>
 
@@ -48,14 +50,25 @@ $rentStatus = Rent::rentStatus($payments, $rent);
             </div>
         </div>
         <div class="flex gap-4">
-            <div class="bg-white p-3 max-w-fit shadow-md rounded-lg mt-4 flex flex-col gap-1">
-                <p class="font-medium">Total pending rent</p>
-                <p class="text-sky-600 font-medium text-center"><?=$rentStatus["pending"]?> INR</p>
-            </div>
-            <div class="bg-white p-3 max-w-fit shadow-md rounded-lg mt-4 flex flex-col gap-1">
-                <p class="font-medium">Total paid rent</p>
-                <p class="text-sky-600 font-medium text-center"><?=$rentStatus["paid"]?> INR</p>
-            </div>
+            <?php if ($rentStatus["pending"]) : ?>
+                <div class="bg-white p-3 max-w-fit shadow-md rounded-lg mt-4 flex flex-col gap-1">
+                    <p class="font-medium">Total pending rent</p>
+                    <p class="text-sky-600 font-medium text-center"><?= $rentStatus["pending"] ?> INR</p>
+                </div>
+                <div class="bg-white p-3 max-w-fit shadow-md rounded-lg mt-4 flex flex-col gap-1">
+                    <p class="font-medium">Total paid rent</p>
+                    <p class="text-sky-600 font-medium text-center"><?= $rentStatus["paid"] ?> INR</p>
+                </div>
+            <?php else : ?>
+                <div class="bg-white p-3 max-w-fit shadow-md rounded-lg mt-4 flex flex-col gap-1">
+                    <p class="font-medium">Total pending rent</p>
+                    <p class="text-sky-600 font-medium text-center">0 INR</p>
+                </div>
+                <div class="bg-white p-3 max-w-fit shadow-md rounded-lg mt-4 flex flex-col gap-1">
+                    <p class="font-medium">Total paid rent</p>
+                    <p class="text-sky-600 font-medium text-center">0 INR</p>
+                </div>
+            <?php endif ?>
         </div>
         <div class="bg-white p-3 shadow-md rounded-lg flex mt-4 gap-4">
             <div>

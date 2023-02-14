@@ -31,6 +31,7 @@ if(!$_SESSION["user_id"]){
         const shopName = document.querySelector("#shop");
         const shopId = document.querySelector("#shop_id");
         const button = document.querySelector("#btn");
+        const userId = document.querySelector("#user_id")
         const formData = new FormData();
         
         formData.append("edit_user_account", true);
@@ -41,6 +42,7 @@ if(!$_SESSION["user_id"]){
         formData.append("address", address.value);
         formData.append("shop", shopName.value);
         formData.append("shop_id", shopId.value);
+        formData.append("user_id", userId.value);
 
         tenantName.addEventListener("input", (e) => {
             formData.append("name", e.target.value);

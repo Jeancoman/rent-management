@@ -74,7 +74,7 @@ class User
     }
 
     public static function queryByPhone(string $phone_number, PDO $pdo){
-        $stmt = $pdo->prepare("SELECT * FROM user u WHERE u.phone_number = :phone_number");
+        $stmt = $pdo->prepare("SELECT * FROM user WHERE phone_number = :phone_number");
         $stmt->bindParam(":phone_number", $phone_number, PDO::PARAM_STR);
         $stmt->execute();
         $user = $stmt->fetch();

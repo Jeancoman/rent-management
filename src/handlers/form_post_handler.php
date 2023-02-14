@@ -18,8 +18,9 @@ if(isset($_POST['edit_user_account'])){
     $aadhaar = $_POST["aadhaar"];
     $shopName = $_POST["shop"];
     $shopId = $_POST["shop_id"];
-    TenantDetails::updateDetailsByUserId(1, $address, $aadhaar, $eb, $db -> connection());
-    User::update(1, $tenantName, $phoneNumber, $db->connection());
+    $userId = $_POST["user_id"];
+    TenantDetails::updateDetailsByUserId($userId, $address, $aadhaar, $eb, $db -> connection());
+    User::update($userId, $tenantName, $phoneNumber, $db->connection());
     Shop::update($shopId, $shopName, $db->connection());
 }
 

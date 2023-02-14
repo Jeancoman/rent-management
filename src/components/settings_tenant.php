@@ -59,6 +59,7 @@ $details = TenantDetails::queryByUserId($_SESSION["user_id"], $database->connect
                 <div class="grid grid-cols-2 gap-4">
                     <div class="mb-6">
                         <input required type="text" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-sky-500 focus:outline-none" id="address" value="<?= $details["address"] ?>" placeholder="Address">
+                        <input id="user_id" class="hidden" type="text" value="<?= $user["id"] ?>">
                     </div>
                     <div class="mb-6">
                         <input required type="text" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-sky-500 focus:outline-none" id="shop" value="<?= $details["shop_name"] ?>" placeholder="Shop name">

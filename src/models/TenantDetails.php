@@ -10,7 +10,7 @@ class TenantDetails {
     }
     public static function updateDetailsByUserId(int $id, string $address, string $aadhaar, string $eb, PDO $pdo)
     {
-        $stmt = $pdo->prepare('UPDATE tenant_details SET aadhaar_number = :aadhaar, eb_number = :eb, address = :address WHERE id = :id');
+        $stmt = $pdo->prepare('UPDATE tenant_details SET aadhaar_number = :aadhaar, eb_number = :eb, address = :address WHERE user_id = :id');
         $stmt->bindParam(':aadhaar', $aadhaar, PDO::PARAM_STR);
         $stmt->bindParam(':eb', $eb, PDO::PARAM_STR);
         $stmt->bindParam(':address', $address, PDO::PARAM_STR);
