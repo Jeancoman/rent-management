@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-if(!$_SESSION["user_id"]){
+if (!$_SESSION["user_id"]) {
     header("location:/login");
     exit();
 }
@@ -26,6 +26,9 @@ if(!$_SESSION["user_id"]){
         const msgInput = document.querySelector("#msg");
         const sendMsg = document.querySelector("#send_msg");
         const formData = new FormData();
+
+        const element = document.querySelector("#scroll");
+        element.scrollTop = element.scrollHeight;
 
         formData.append("chat_page", true);
         formData.append("user_id", <?= $_SESSION["user_id"] ?>);
