@@ -1,4 +1,4 @@
-This is a simple Rent Managment System made with PHP, JavaScript, TailwindCSS and MySQL database for persistence.
+This is a simple rent managment system made with PHP, JavaScript, TailwindCSS and MySQL database for persistence.
 
 **#Database Details**
 
@@ -30,5 +30,5 @@ password: 12345
 
 Inputs aren't validated, when testing, don't leave them empty or unexpected bugs may appear.
 
-The chat is not Real-Time. Due to time constraints, I couldn't implement WebSockets but other than that it behaves like a normal chat. To send pictures/screenshots, you have to input the URL where the image resource is located and it will be parsed to HTML5.
+The chat is not Real-Time. Due to time constraints, I couldn't implement WebSockets but other than that it behaves like a normal chat. To send pictures/screenshots, you have to input the URL where the image resource is located and it will be parsed into HTML5.
 
