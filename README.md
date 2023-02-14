@@ -7,6 +7,8 @@ This is a simple rent managment system made with PHP, JavaScript, TailwindCSS an
 **user:** root
 **password:**
 
+This details can be changed in the Database class inside /src/database.
+
 **#Testing**
 
 You can test this application using the following users:
