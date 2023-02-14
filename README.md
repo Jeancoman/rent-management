@@ -2,9 +2,9 @@ This is a simple rent managment system made with PHP, JavaScript, TailwindCSS an
 
 # Database Details
 
-**host:** localhost__
-**name:** rent-management__
-**user:** root__
+**host:** localhost <br />
+**name:** rent-management <br />
+**user:** root <br />
 **password:**
 
 This details can be changed in the Database class inside /src/database.
@@ -15,18 +15,18 @@ You can test this application using the following users:
 
 ## Tenant
 
-phone_number: 123456789011__
-password: 12345__
+phone_number: 123456789011 <br />
+password: 12345 
 
 ## Owner
 
-phone_number: owner__
-password: 12345__
+phone_number: owner <br />
+password: 12345
 
 ## Administrator
 
-phone_number: administrator__
-password: 12345__
+phone_number: administrator <br />
+password: 12345 
 
 # Notes
 
@@ -36,14 +36,14 @@ The chat is not Real-Time. Due to time constraints, I couldn't implement WebSock
 
 # Endpoist
 
-*/*__
-*/login*__
-*/payments*__
-*/chat*__
-*/chat/{chat_id}*__
-*/tenants*__
-*/rent*__
-*/settings*__
+*/* <br />
+*/login* <br />
+*/payments* <br />
+*/chat* <br />
+*/chat/{chat_id}* <br />
+*/tenants* <br />
+*/rent* <br />
+*/settings* <br />
 
 Endpoist are protected. Some endpoints may have the same URL but redirect to diferent resources based on the user.
 
