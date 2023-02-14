@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-02-2023 a las 07:54:54
+-- Tiempo de generación: 14-02-2023 a las 15:56:57
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -50,7 +50,23 @@ INSERT INTO `chat` (`chat_id`, `name`) VALUES
 (10, 'none'),
 (11, 'none'),
 (12, 'none'),
-(13, 'none');
+(13, 'none'),
+(14, 'none'),
+(15, 'none'),
+(16, 'none'),
+(17, 'none'),
+(18, 'none'),
+(19, 'none'),
+(20, 'none'),
+(21, 'none'),
+(22, 'none'),
+(23, 'none'),
+(24, 'none'),
+(25, 'none'),
+(26, 'none'),
+(27, 'none'),
+(28, 'none'),
+(29, 'none');
 
 -- --------------------------------------------------------
 
@@ -74,14 +90,6 @@ INSERT INTO `chat_user` (`chat_id`, `user_id`) VALUES
 (2, 3),
 (3, 2),
 (3, 3),
-(4, 4),
-(4, 2),
-(5, 4),
-(5, 3),
-(6, 5),
-(6, 2),
-(7, 5),
-(7, 3),
 (8, 6),
 (8, 2),
 (9, 6),
@@ -89,7 +97,15 @@ INSERT INTO `chat_user` (`chat_id`, `user_id`) VALUES
 (11, 7),
 (11, 2),
 (13, 7),
-(13, 3);
+(13, 3),
+(15, 8),
+(15, 2),
+(17, 8),
+(17, 3),
+(27, 11),
+(27, 2),
+(29, 11),
+(29, 3);
 
 -- --------------------------------------------------------
 
@@ -114,7 +130,13 @@ INSERT INTO `message` (`message_id`, `timestamp`, `content`, `user_id`, `chat_id
 (2, '2023-02-13 15:27:26', 'This is the screenshot.', 1, 2),
 (3, '2023-02-13 15:27:26', 'https://pbs.twimg.com/media/ETVQdB9UUAAxMSX?format=jpg&name=large', 1, 2),
 (4, '2023-02-13 19:44:40', 'Ok, let me check my account.', 3, 2),
-(5, '2023-02-14 05:45:24', 'Ok.', 1, 2);
+(5, '2023-02-14 05:45:24', 'Ok.', 1, 2),
+(6, '2023-02-14 12:54:13', 'Sir, I have made another payment. Please check your account.', 1, 2),
+(7, '2023-02-14 12:56:02', 'I have accepted your payment.', 3, 2),
+(15, '2023-02-14 14:42:33', 'Good morning, I have made this month\'s payment, the reference is 4405.', 1, 2),
+(16, '2023-02-14 14:44:47', 'Yes, I received, I will accept it in a while.', 3, 2),
+(17, '2023-02-14 14:47:52', 'Hello, Rand, please remember the payment of the rent is by the end of each month. Please also remenber to update your account information.', 3, 29),
+(18, '2023-02-14 14:48:43', 'Ok, thank you.', 11, 29);
 
 -- --------------------------------------------------------
 
@@ -140,10 +162,7 @@ CREATE TABLE `payment` (
 INSERT INTO `payment` (`id`, `date`, `status`, `amount`, `paid_by`, `reference`, `user_id`, `rent_id`) VALUES
 (1, '2023-01-25', 'ACCEPTED', 20000, 'NEFT', '8485', 1, 1),
 (2, '2023-02-12', 'ACCEPTED', 20000, 'NEFT', '7923', 1, 1),
-(3, '2023-02-01', 'ACCEPTED', 40000, 'CHEQUE', '4523', 4, 2),
-(4, '2023-01-25', 'ACCEPTED', 20000, 'CASH', '', 5, 3),
-(5, '2023-02-13', 'REVIEWING', 10000, 'CASH', 'none', 1, 1),
-(6, '2023-02-13', 'REVIEWING', 20000, 'CASH', 'none', 1, 1);
+(11, '2023-02-14', 'ACCEPTED', 20000, 'NEFT', '4405', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -167,10 +186,10 @@ CREATE TABLE `rent` (
 
 INSERT INTO `rent` (`id`, `initial_date`, `end_date`, `total_amount`, `monthly_amount`, `shop_id`, `user_id`) VALUES
 (1, '2023-01-01', '2024-01-01', 1000000, 100000, 1, 1),
-(2, '2023-01-01', '2023-11-01', 200000, 20000, 2, 4),
-(3, '2023-01-01', '2023-04-01', 60000, 20000, 3, 5),
 (4, '2023-01-01', '2023-09-01', 80000, 20000, 4, 6),
-(6, '2023-01-14', '2023-09-14', 100000, 20000, 6, 7);
+(7, '2023-02-14', '2023-02-14', 100000, 20000, 6, 7),
+(9, '2023-02-01', '2023-10-14', 100000, 20000, 8, 8),
+(11, '2023-02-01', '2023-12-14', 100000, 20000, 14, 11);
 
 -- --------------------------------------------------------
 
@@ -189,11 +208,17 @@ CREATE TABLE `shop` (
 
 INSERT INTO `shop` (`shop_id`, `shop_name`) VALUES
 (1, 'Tecnological Revolution'),
-(2, 'Mobile World'),
-(3, 'Technical Reparations Inc'),
 (4, 'Ramen Kitchen'),
 (5, 'Not set'),
-(6, 'Not set');
+(6, 'Not set'),
+(7, 'Not set'),
+(8, 'Nintendo'),
+(9, 'Not set'),
+(10, 'Not set'),
+(11, 'Not set'),
+(12, 'Dilema'),
+(13, 'Not set'),
+(14, 'Microsoft');
 
 -- --------------------------------------------------------
 
@@ -216,11 +241,11 @@ CREATE TABLE `tenant_details` (
 --
 
 INSERT INTO `tenant_details` (`id`, `profile_picture`, `aadhaar_number`, `eb_number`, `address`, `shop_id`, `user_id`) VALUES
-(1, NULL, '1234 5678 9011', 'BE-10-IN', 'Bangladesh, India', 1, 1),
-(2, NULL, '1234 5678 9011', 'ME-40-IN', 'Bangladesh, India', 2, 4),
-(3, NULL, '1234 5678 9011', 'BG-39-IN', 'Bangladesh, India', 3, 5),
+(1, NULL, '1010 5040 2050', 'EB-G1-20', 'Bucaramang, India', 1, 1),
 (4, NULL, '1234 5678 9011', 'MU-30-IN', 'Bangladesh, India', 4, 6),
-(5, NULL, 'Not set', 'Not set', 'Not set', 6, 7);
+(5, NULL, 'Not set', 'Not set', 'Not set', 6, 7),
+(6, NULL, 'Not set', 'Not set', 'Not set', 8, 8),
+(9, NULL, '4040 0343 2943', 'EB-20-UN', 'Mocaranga, India', 14, 11);
 
 -- --------------------------------------------------------
 
@@ -241,13 +266,14 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `phone_number`, `password`, `type`) VALUES
-(1, 'Narendra Gara', '123456789011', '12345', 'TENANT'),
+(1, 'Naram Gara', '1234567890', '12345', 'TENANT'),
 (2, 'Administrator', 'administrator', '12345', 'ADMINISTRATOR'),
 (3, 'Owner', 'owner', '12345', 'OWNER'),
-(4, 'Lata Patla', '04424993266 \r\n', '12345', 'TENANT'),
-(5, 'Om Sura', '02227467277 \r\n', '12345', 'TENANT'),
 (6, 'Kalpana Menon\r\n', '02225243263', '12345', 'TENANT'),
-(7, 'Najeem Sudan', '2345670134', '12345', 'TENANT');
+(7, 'Najeem Sudan', '2345670134', '12345', 'TENANT'),
+(8, 'Ishaan Ghul', '2525223', '12345', 'TENANT'),
+(10, 'Raas a Guul', '542345', '12345', 'TENANT'),
+(11, 'Rand Thor', '348605', '12345', 'TENANT');
 
 --
 -- Índices para tablas volcadas
@@ -320,43 +346,43 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `chat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `message`
 --
 ALTER TABLE `message`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `rent`
 --
 ALTER TABLE `rent`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `shop`
 --
 ALTER TABLE `shop`
-  MODIFY `shop_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `shop_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `tenant_details`
 --
 ALTER TABLE `tenant_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas
