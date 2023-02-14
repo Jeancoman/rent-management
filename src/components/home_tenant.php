@@ -1,11 +1,19 @@
 <?php
-$pdo = new PDO('mysql:host=localhost;dbname=rent-management', 'root', '');
-$stmt = $pdo->prepare('SELECT * FROM user WHERE id = 1');
-$stmt->execute();
-$user = $stmt->fetch();
-$stmt = $pdo->prepare('SELECT * FROM tenant_details t JOIN shop s ON t.user_id = s.id AND t.user_id = 1');
-$stmt->execute();
-$details = $stmt->fetch();
+
+include_once(dirname($_SERVER['DOCUMENT_ROOT']) . '/src/models/User.php');
+include_once(dirname($_SERVER['DOCUMENT_ROOT']) . '/src/models/TenantDetails.php');
+include_once(dirname($_SERVER['DOCUMENT_ROOT']) . '/src/models/Payment.php');
+include_once(dirname($_SERVER['DOCUMENT_ROOT']) . '/src/models/Rent.php');
+include_once(dirname($_SERVER['DOCUMENT_ROOT']) . '/src/database/Database.php');
+
+$database = new Database();
+$user_id = $_SESSION["user_id"];
+$user = User::queryById($user_id, $database->connection());
+$details = TenantDetails::queryByUserId($user_id, $database->connection());
+$rent = Rent::queryByUserId($user_id, $database-> connection());
+$payments = Payment::queryAllByUserIdAndRentId($user_id, $rent["id"], $database->connection());
+$rentStatus = Rent::rentStatus($payments, $rent);
+
 ?>
 
 <div class="p-6 grid grid-cols-[320px_640px] gap-10">
@@ -33,44 +41,44 @@ $details = $stmt->fetch();
         </div>
     </div>
     <div>
-        <div class="bg-white p-6 max-w-xs shadow-md rounded-lg">
+        <div class="bg-white p-6 max-w-[300px] shadow-md rounded-lg">
             <div class="flex items-center gap-4">
-                <img src="https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2017/11/17/639329-indian-men.jpg" class="w-16 h-16 rounded-full object-cover">
-                <p class="font-medium">
-                    <?php
-                    echo ($user["name"])
-                    ?>
-                </p>
+                <img src="https://thumbs.dreamstime.com/b/user-profile-avatar-icon-134114292.jpg" class="w-16 h-16 rounded-full object-cover">
+                <p class="font-medium"> <?= $user["name"] ?> </p>
             </div>
         </div>
-        <div class="bg-white p-3 max-w-xs shadow-md rounded-lg mt-4 flex gap-1">
-            <p>Pending rent:</p>
-            <p class="text-sky-600 font-medium">100,000 INR</p>
+        <div class="flex gap-4">
+            <div class="bg-white p-3 max-w-fit shadow-md rounded-lg mt-4 flex flex-col gap-1">
+                <p class="font-medium">Total pending rent</p>
+                <p class="text-sky-600 font-medium text-center"><?=$rentStatus["pending"]?> INR</p>
+            </div>
+            <div class="bg-white p-3 max-w-fit shadow-md rounded-lg mt-4 flex flex-col gap-1">
+                <p class="font-medium">Total paid rent</p>
+                <p class="text-sky-600 font-medium text-center"><?=$rentStatus["paid"]?> INR</p>
+            </div>
         </div>
         <div class="bg-white p-3 shadow-md rounded-lg flex mt-4 gap-4">
             <div>
                 <p class="text-sm font-medium">Address</p>
-                <p> <?php
-                    echo ($details["address"])
-                    ?></p>
+                <p> <?= $details["address"] ?></p>
             </div>
         </div>
         <div class="bg-white p-6 mt-4 shadow-md rounded-lg flex gap-8">
             <div>
                 <p class="text-sm font-medium">Phone Number</p>
-                <p><?php echo ($user["phone_number"])?></p>
+                <p><?= $user["phone_number"] ?></p>
             </div>
             <div>
                 <p class="text-sm font-medium">Aadhaar Number</p>
-                <p> <?php echo ($details["aadhaar_number"]) ?></p>
+                <p> <?= $details["aadhaar_number"] ?></p>
             </div>
             <div>
                 <p class="text-sm font-medium">EB Number</p>
-                <p> <?php echo ($details["eb_number"]) ?></p>
+                <p> <?= $details["eb_number"] ?></p>
             </div>
             <div>
                 <p class="text-sm font-medium">Shop Name</p>
-                <p> <?php echo ($details["name"]) ?></p>
+                <p> <?= $details["shop_name"] ?></p>
             </div>
         </div>
     </div>

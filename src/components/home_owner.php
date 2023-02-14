@@ -15,15 +15,11 @@
                     <img src="../assets/chat_bubble.svg" class="w-6 h-6">
                     <p>Chat</p>
                 </a>
-                <a href="/shops" class="flex items-center gap-2 cursor-pointer">
-                    <img src="../assets/store.svg" class="w-6 h-6">
-                    <p>Shops</p>
-                </a>
                 <a href="/tenants" class="flex items-center gap-2 cursor-pointer">
                     <img src="../assets/groups.svg" class="w-6 h-6">
                     <p>Tenants</p>
                 </a>
-                <a href="/rents" class="flex items-center gap-2 cursor-pointer">
+                <a href="/rent" class="flex items-center gap-2 cursor-pointer">
                     <img src="../assets/receipt_long.svg" class="w-6 h-6">
                     <p>Rent</p>
                 </a>

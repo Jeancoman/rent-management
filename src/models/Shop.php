@@ -1,25 +1,21 @@
 <?php
 
-/*
+class Shop {
 
-use Illuminate\Database\Eloquent\Model;
-include(dirname($_SERVER['DOCUMENT_ROOT']) . '/src/models/Rent.php');
-include(dirname($_SERVER['DOCUMENT_ROOT']) . '/src/models/TenantDetails.php');
-
-class Shop extends Model {
-
-    protected $table = 'shop';
-
-    public $timestamps = false;
-
-    public function rents(){
-        return $this->hasMany(Rent::class);
+    public static function queryById(int $id, PDO $pdo)
+    {
+        $stmt = $pdo->prepare('SELECT * FROM shop WHERE shop_id = :id');
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $shop = $stmt->fetch();
+        return $shop;
     }
 
-    public function tenants(){
-        return $this->hasMany(TenantDetails::class);
+    public static function update(int $id, string $name, PDO $pdo)
+    {
+        $stmt = $pdo->prepare('UPDATE shop SET shop_name = :name WHERE shop_id = :id');
+        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
     }
-
 }
-
-*/

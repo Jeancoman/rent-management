@@ -1,24 +1,20 @@
 <?php
-/*
-use Illuminate\Database\Eloquent\Model;
-include(dirname($_SERVER['DOCUMENT_ROOT']) . '/src/models/User.php');
-include(dirname($_SERVER['DOCUMENT_ROOT']) . '/src/models/Shop.php');
+class TenantDetails {
 
-class TenantDetails extends Model
-{
-
-    protected $table = 'tenant_details';
-
-    public $timestamps = false;
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+    public static function queryByUserId(int $id, PDO $pdo){
+        $stmt = $pdo->prepare("SELECT * FROM tenant_details t JOIN shop s ON t.shop_id = s.shop_id AND t.user_id = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $details = $stmt->fetch();
+        return $details;
     }
-
-    public function shop()
+    public static function updateDetailsByUserId(int $id, string $address, string $aadhaar, string $eb, PDO $pdo)
     {
-        return $this->belongsTo(Shop::class);
+        $stmt = $pdo->prepare('UPDATE tenant_details SET aadhaar_number = :aadhaar, eb_number = :eb, address = :address WHERE id = :id');
+        $stmt->bindParam(':aadhaar', $aadhaar, PDO::PARAM_STR);
+        $stmt->bindParam(':eb', $eb, PDO::PARAM_STR);
+        $stmt->bindParam(':address', $address, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
     }
 }
-*/

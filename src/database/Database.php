@@ -23,17 +23,15 @@ class Database
 
 class Database
 {
-    private PDO $db;
+    private PDO $pdo;
 
     public function __construct()
     {
-        $this->db = new PDO('mysql:host=localhost;dbname=rent-management', 'root', '', array(
-            PDO::ATTR_PERSISTENT => true
-        ));
+        $this->pdo = new PDO('mysql:host=localhost;dbname=rent-management', 'root', '');
     }
 
-    public function connection()
+    public function connection(): PDO
     {
-        return $this->db;
+        return $this->pdo;
     }
 }
