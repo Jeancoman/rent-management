@@ -65,7 +65,7 @@ $messages = Message::queryAllByChatId($chat_id, $database->connection());
                         <?php endif; ?>
                     <?php endforeach ?>
                 <?php else : ?>
-                    <div class="flex justify-center">
+                    <div class="mt-60 flex justify-center items-end">
                         <div class="bg-sky-100 rounded-md w-fit p-2">
                             There are no messages in this chat
                         </div>
