@@ -26,3 +26,7 @@ password: 12345
 phone_number: administrator
 password: 12345
 
+**#Notes**
+
+Inputs aren't validated, when testing, don't leave them empty or unexpected bugs may appear.
+
