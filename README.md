@@ -15,7 +15,7 @@ You can test this application using the following users:
 
 ## Tenant
 
-phone_number: 123456789011 <br />
+phone_number: 1234567890 <br />
 password: 12345 
 
 ## Owner
